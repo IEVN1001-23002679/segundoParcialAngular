@@ -1,19 +1,162 @@
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
 
-<form class="max-w-sm mx-auto space-y-4">
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Small Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Lista Alumnos
+  </h1>
+
+  <form [formGroup]="formulario">
+
+    <div class="mb-5">
+
+      <label
+        for="matricula"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Matrícula
+      </label>
+
+      <input
+        type="text"
+        id="matricula"
+        name="matricula"
+        formControlName="matricula"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Matricula"
+      >
+
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Base Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+
+
+    <!-- Nombre -->
+    <div class="mb-5">
+
+      <label
+        for="nombre"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Nombre
+      </label>
+
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        formControlName="nombre"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Nombre"
+      >
+
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Large Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
+
+
+    <!-- Correo -->
+    <div class="mb-5">
+
+      <label
+        for="correo"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Correo electrónico
+      </label>
+
+      <input
+        type="email"
+        id="correo"
+        name="correo"
+        formControlName="correo"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Correo"
+      >
+
     </div>
-    <div>
-        <label for="visitors" class="block mb-2.5 text-sm font-medium text-heading">Extra Large Input</label>
-        <input type="text" id="visitors" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
+
+
+    <!-- Materia -->
+    <div class="mb-5">
+
+      <label
+        for="materia"
+        class="block mb-2 text-sm font-medium text-gray-900"
+      >
+        Materia
+      </label>
+
+      <input
+        type="text"
+        id="materia"
+        name="materia"
+        formControlName="materia"
+        required
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Materia"
+      >
     </div>
-</form>
+
+
+    <!-- Botón Registrar -->
+    <div class="flex justify-center mt-5">
+
+      <button
+        type="submit"
+        (click)="muestraAlumnos()"
+        class="text-white bg-blue-700 hover:bg-blue-800
+               focus:ring-4 focus:outline-none focus:ring-blue-300
+               font-medium rounded-lg text-sm px-5 py-2.5
+               disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Registrar
+      </button>
+
+    </div>
+
+  </form>
+
+  <!-- Table -->
+<div class="mt-10 border-t pt-6">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">
+      Lista de alumnos
+    </h2>
+
+    <h3>Matricula: {{alumno.matricula}}</h3>
+    <h3>Nombre: {{alumno.nombre}}</h3>
+    <h3>Correo: {{alumno.correo}}</h3>
+    <h3>Materia: {{alumno.materia}}</h3>
+
+
+<!--     <div class="relative overflow-x-auto rounded-lg border border-gray-200">
+      <table class="w-full text-sm text-left text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3">Matrícula</th>
+            <th scope="col" class="px-6 py-3">Nombre</th>
+            <th scope="col" class="px-6 py-3">Correo</th>
+            <th scope="col" class="px-6 py-3">Materia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alumno of listaAlumnos" class="bg-white border-b hover:bg-gray-50">
+            <td class="px-6 py-4 font-medium text-gray-900">{{ alumno.matricula }}</td>
+            <td class="px-6 py-4">{{ alumno.nombre }}</td>
+            <td class="px-6 py-4">{{ alumno.correo }}</td>
+            <td class="px-6 py-4">{{ alumno.materia }}</td>
+          </tr>
+          <tr *ngIf="!listaAlumnos || listaAlumnos.length === 0">
+            <td colspan="4" class="px-6 py-4 text-center text-gray-500">
+              No hay alumnos registrados aún.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+
+  </div>
+
+</div>
