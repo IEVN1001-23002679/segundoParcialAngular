@@ -1,0 +1,99 @@
+
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Editar registro
+  </h1>
+
+  <form [formGroup]="formulario">
+
+    <div class="mb-4">
+      <label class="block mb-2">Nombre</label>
+      <input type="text" formControlName="nombre"
+        class="bg-gray-50 border rounded-lg w-full p-2.5">
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2">Apellido paterno</label>
+      <input type="text" formControlName="apaterno"
+        class="bg-gray-50 border rounded-lg w-full p-2.5">
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2">Apellido materno</label>
+      <input type="text" formControlName="amaterno"
+        class="bg-gray-50 border rounded-lg w-full p-2.5">
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mb-4">
+      <div>
+        <label class="block mb-2">Día</label>
+        <input type="number" formControlName="dia"
+          class="bg-gray-50 border rounded-lg w-full p-2.5">
+      </div>
+
+      <div>
+        <label class="block mb-2">Mes</label>
+        <input type="number" formControlName="mes"
+          class="bg-gray-50 border rounded-lg w-full p-2.5">
+      </div>
+
+      <div>
+        <label class="block mb-2">Año</label>
+        <input type="number" formControlName="anio"
+          class="bg-gray-50 border rounded-lg w-full p-2.5">
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2">Edad</label>
+      <input type="number" formControlName="edad"
+        class="bg-gray-50 border rounded-lg w-full p-2.5">
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-2">Sexo</label>
+
+      <label class="mr-5">
+        <input type="radio" formControlName="sexo" value="Masculino">
+        Masculino
+      </label>
+
+      <label>
+        <input type="radio" formControlName="sexo" value="Femenino">
+        Femenino
+      </label>
+    </div>
+
+    <div class="mb-6">
+      <label class="block mb-2">Signo zodiacal chino</label>
+
+      <select formControlName="signo"
+        class="bg-gray-50 border rounded-lg w-full p-2.5">
+
+        <option value="">Selecciona un signo</option>
+
+        <option *ngFor="let signo of signos" [value]="signo">
+          {{ signo }}
+        </option>
+
+      </select>
+    </div>
+
+    <div class="flex flex-wrap gap-3 justify-center">
+
+      <button type="button" (click)="guardarCambios()"
+        class="bg-green-600 text-white rounded-lg px-5 py-2.5">
+        Guardar cambios
+      </button>
+
+      <button type="button" (click)="regresar()"
+        class="bg-gray-600 text-white rounded-lg px-5 py-2.5">
+        Regresar
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

@@ -17,6 +17,18 @@ export const routes: Routes = [
                     import('./formularios/zodiaco/zodiaco').then(
                         (c)=>c.Zodiaco
                     ),
+            },
+            {
+            path: 'registros-zodiaco',
+            loadComponent: () =>
+                import('./formularios/registros-zodiaco/registros-zodiaco')
+                .then((c) => c.RegistrosZodiaco)
+            },
+            {
+            path: 'editar-zodiaco/:id',
+            loadComponent: () =>
+                import('./formularios/editar-zodiaco/editar-zodiaco')
+                .then((c) => c.EditarZodiaco)
             }
         ],
       

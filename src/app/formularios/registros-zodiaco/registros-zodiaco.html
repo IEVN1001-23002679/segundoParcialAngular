@@ -1,0 +1,83 @@
+
+<div class="max-w-6xl mx-auto p-6">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Registros del Horóscopo Chino
+  </h1>
+
+  <div class="flex gap-3 mb-5">
+    <button type="button" (click)="regresar()"
+      class="bg-gray-600 text-white rounded-lg px-5 py-2.5">
+      Regresar
+    </button>
+  </div>
+
+  <div class="relative overflow-x-auto shadow-md rounded-lg">
+
+    <table class="w-full text-sm text-left text-gray-600">
+
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th class="px-6 py-3">Nombre completo</th>
+          <th class="px-6 py-3">Edad</th>
+          <th class="px-6 py-3">Signo</th>
+          <th class="px-6 py-3">Sexo</th>
+          <th class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let registro of registros; let i = index"
+          class="bg-white border-b hover:bg-gray-50">
+
+          <td class="px-6 py-4 font-medium text-gray-900">
+            {{ registro.nombre }}
+            {{ registro.apaterno }}
+            {{ registro.amaterno }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ registro.edad }} años
+          </td>
+
+          <td class="px-6 py-4">
+            {{ registro.signo }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ registro.sexo }}
+          </td>
+
+          <td class="px-6 py-4">
+            <div class="flex gap-2">
+
+              <button type="button"
+                (click)="editarRegistro(i)"
+                class="bg-red-600 text-white rounded-lg px-4 py-2">
+                Editar
+              </button>
+
+              <button type="button"
+                (click)="eliminarRegistro(i)"
+                class="bg-red-600 text-white rounded-lg px-4 py-2">
+                Eliminar
+              </button>
+
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div *ngIf="registros.length === 0"
+    class="p-4 mt-4 bg-gray-100 rounded-lg"
+    role="alert">
+
+    No hay registros guardados.
+
+  </div>
+
+</div>
